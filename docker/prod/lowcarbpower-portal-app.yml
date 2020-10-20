@@ -1,0 +1,12 @@
+########################################################################
+# Start a web-ui
+# docker-compose -f lowCarbPower-portal.yml up
+########################################################################
+lowCarbPower-portal:
+  image: hvashistha54/lowCarbPower-portal:latest
+  ports:
+    - 9000:9000
+  environment:
+    - SPRING_PROFILES_ACTIVE=production    
+    - env_name=production 
+

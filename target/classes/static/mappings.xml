@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozermapper.github.io/schema/bean-mapping"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozermapper.github.io/schema/bean-mapping http://dozermapper.github.io/schema/bean-mapping.xsd">
+    <mapping>
+        <class-a>com.lowCarbPower.lowCarbPowerportal.model.PriceModel</class-a>
+        <class-b>com.lowCarbPower.lowCarbPowerportal.entity.PriceEntity</class-b>
+        <field>
+            <a>unit</a>
+            <b>unit</b>
+        </field>
+        <field>
+            <a>value</a>
+            <b>value</b>
+        </field>
+    </mapping>
+    <mapping>
+        <class-a>com.lowCarbPower.lowCarbPowerportal.model.CustomerModel</class-a>
+        <class-b>com.lowCarbPower.lowCarbPowerportal.entity.CustomerEntity</class-b>
+        <field>
+            <a>username</a>
+            <b>username</b>
+        </field>
+        <field>
+            <a>password</a>
+            <b>password</b>
+        </field>
+    </mapping>
+</mappings>

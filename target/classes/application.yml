@@ -1,0 +1,47 @@
+--- 
+api.version: "1.0.0"
+coalfired.api.url: "http://127.0.0.1:5000/productOfferingPrice/block-256-offer-price"
+json.placeholder.url.posts: "https://jsonplaceholder.typicode.com/posts"
+json.placeholder.url.comments.by.postId: "https://jsonplaceholder.typicode.com/comments?postId="
+cron_expression: "0 */1 * * * ?"
+dozer.mapping-files: "classpath:/static/mappings.xml"
+logging:
+  file: log/lowCarbPower-portal.log
+  level: 
+    com.lowCarbPower: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: INFO
+    org.springframework.web: INFO
+    org.springframework.web.filter.CommonsRequestLoggingFilter: INFO
+server: 
+  port: 9000
+spring: 
+  application: 
+     name: lowCarbPower-portal
+  data: 
+    elasticsearch.properties.host: localhost
+    elasticsearch.use-aws-es: false
+    jest.uris: "http://127.0.0.1:9200/"
+  datasource: 
+    driver-class-name: com.mysql.jdbc.Driver
+    password: root1234
+    testOnBorrow: true
+    url: "jdbc:mysql://localhost:3306/TestLowCarbPower"
+    username: root
+    validationQuery: "SELECT 1"
+  jpa: 
+    database: MYSQL
+    hibernate: 
+      SQL: TRACE
+      ddl-auto: create
+      naming: 
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        strategy: org.hibernate.cfg.EJB3NamingStrategy
+      show-sql: true
+    properties: 
+      org.hibernate.envers.store_data_at_delete: true
+  profiles.active: local
+  redis: 
+    host: localhost
+    port: 6379

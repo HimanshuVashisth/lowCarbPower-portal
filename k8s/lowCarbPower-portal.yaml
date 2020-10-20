@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lowCarbPower-portal-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component: server
+  template:
+    metadata:
+      labels:
+        component: server   
+    spec:
+      containers:
+      - name: server
+        image: hvashistha54/lowCarbPower-portal
+        ports:
+        - containerPort: 9000
+        env:
+          - name: LOW_CARB_POWER_PORTAL_HOST
+            value: lowCarbPower-portal-cluster-ip-service

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property scope="context" name="log.fileExtension" value="log"></property>
+    <property scope="context" name="log.directory" value="/log"></property>
+    <property scope="context" name="log.fileName" value="lowCarbPower-portal"></property>
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${log.directory}/${log.fileName}.%d{yyyy-MM-dd}.${log.fileExtension}</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-5level [SESSION ID]:%X{sessionId} - [USERNAME]:%X{username} - %logger{26}.%M:%L - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Send debug messages to System.out -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!--<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n</pattern>-->
+            <pattern>%d{HH:mm:ss.SSS} %-5level %X{requestId} %logger{0}.%M:%L - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--<logger name="com.transactortech.matahariapi" level="INFO" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>-->
+
+    <!--<logger name="com.transactortech.matahariapi" level="INFO" additivity="false">
+        <appender-ref ref="FILE"/>
+    </logger>-->
+
+    <logger name="org.springframework" level="INFO" additivity="false">
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <logger name="org.hibernate.SQL" additivity="false">
+        <level value="DEBUG"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="org.hibernate.type" additivity="false" >
+        <level value="TRACE" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <!-- By default, the level of the root level is set to DEBUG -->
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>
